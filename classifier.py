@@ -33,7 +33,7 @@ def train(path):
     texts, labels = load_dataset(path)
 
     # ======================================================
-    # ✅ 1. Train–Test Split
+    # Train Test Split
     # ======================================================
     X_train, X_test, y_train, y_test = train_test_split(
         texts,
@@ -43,7 +43,7 @@ def train(path):
     )
 
     # ======================================================
-    # ✅ 2. Model Selection
+    #  Model Selection
     # ======================================================
     vectorizer = TfidfVectorizer(
         stop_words="english",
@@ -52,14 +52,14 @@ def train(path):
 
     clf = MultinomialNB()
 
-    # Convert training text into vectors
+    # Converting training text into vectors
     X_train_vec = vectorizer.fit_transform(X_train)
 
     # Train the model
     clf.fit(X_train_vec, y_train)
 
     # ======================================================
-    # ✅ 3. Model Evaluation
+    # Model Evaluation
     # ======================================================
     X_test_vec = vectorizer.transform(X_test)
     predictions = clf.predict(X_test_vec)
